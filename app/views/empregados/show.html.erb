@@ -1,0 +1,79 @@
+
+<div>
+  <h1>Detalhes do Funcionário</h1>
+  <br/>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>ID do empregado</td>
+        <td>
+          <%= @empregado.id %>
+        </td>
+      </tr>
+      <tr>
+        <td>Nome do empregado</td>
+        <td>
+          <%= @empregado.firstname %>
+        </td>
+      </tr>
+      <tr>
+        <td>Sobrenome do empregado</td>
+        <td>
+          <%= @empregado.lastname %>
+        </td>
+      </tr>
+      <tr>
+        <td>E-mail</td>
+        <td>
+          <%= @empregado.email %>
+        </td>
+      </tr>
+      <tr>
+        <td>Telefone</td>
+        <td>
+          <%= @empregado.phone %>
+        </td>
+      </tr>
+      <tr>
+        <td>Tem Passaporte</td>
+        <td>
+          <%= @empregado.haspassport %>
+        </td>
+      </tr>
+      <tr>
+        <td>Salário</td>
+        <td>
+          <%= @empregado.salary %>
+        </td>
+      </tr>
+      <tr>
+        <td>Observações</td>
+        <td>
+          <%= @empregado.notes %>
+        </td>
+      </tr>
+      <tr>
+        <td>Data de nascimento</td>
+        <td>
+          <%= @empregado.birthdate %>
+        </td>
+      </tr>
+      <tr>
+        <td>Data de Admissão</td>
+        <td>
+          <%= @empregado.hiredate %>
+        </td>
+      </tr>
+      <tr>
+        <td>Gênero</td>
+        <td>
+          <%= @empregado.gender %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a href="<%= empregados_path %>" class="btn btn-primary" style="margin: 5px 5px 5px 10px;">Voltar</a>
+</div>

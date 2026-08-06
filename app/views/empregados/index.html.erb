@@ -1,0 +1,37 @@
+<div>
+  <h1>Listando Funcionários</h1>
+  <br/>
+
+<br/><br/>
+
+<% if @empregados.present? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @empregados.each do | empregado | %>
+        <tr>
+          <td><%= empregado.id %></td>
+          <td><%= empregado.firstname %></td>
+          <td><%= empregado.lastname %></td>
+          <td><%= empregado.email %></td>
+          <td><%= empregado.phone %></td>
+          <td><%= link_to "Detalhes", exibicao_path(empregado), class: "btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Nenhum funcionário cadastrado.</p>
+<% end %>
+
+
+</div>
