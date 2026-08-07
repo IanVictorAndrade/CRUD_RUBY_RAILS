@@ -4,7 +4,10 @@
 
 <br/><br/>
 
-<% if @empregados.present? %>
+  <a href="<%= novo_empregado_path %>" class="btn btn-primary" style="margin: 10px 10px 10px 10px">Novo Funcionário</a>
+
+
+  <% if @empregados.present? %>
   <table class="table">
     <thead>
       <tr>
@@ -25,6 +28,8 @@
           <td><%= empregado.email %></td>
           <td><%= empregado.phone %></td>
           <td><%= link_to "Detalhes", exibicao_path(empregado), class: "btn btn-primary"%></td>
+          <td><%= link_to "Editar", edit_empregado_path(empregado), class: "btn btn-secondary"%></td>
+          <td><%= link_to "Excluir", delete_empregado_path(empregado), class: "btn btn-danger"%></td>
         </tr>
       <% end %>
     </tbody>

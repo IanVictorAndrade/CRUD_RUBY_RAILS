@@ -9,4 +9,16 @@ Rails.application.routes.draw do
   get "empregados" => "empregados#index", as: "empregados"
 
   get "show/:id" => "empregados#show", as: "exibicao"
+
+  get "empregados/:id" => "empregados#edit", as: "edit_empregado"
+
+  patch "empregados/:id" => "empregados#update", as: "update_empregado"
+
+  get "empregados/:id/delete" => "empregados#delete_empregado", as: "delete_empregado"
+
+  delete "empregados/:id" => "empregados#destroy", as: "empregado"
+
+  get "empregado/novo" => "empregados#new", as: "novo_empregado"
+
+  post "empregados" => "empregados#create", as: "create_empregado"
 end
