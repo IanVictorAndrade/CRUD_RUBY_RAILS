@@ -15,6 +15,10 @@ gem "puma", ">= 5.0"
 gem "image_processing", "~> 1.2"
 
 gem "actiontext"
+gem "importmap-rails"
+
+# Serve JavaScript and CSS assets, including Action Text and Active Storage modules.
+gem "propshaft"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -36,9 +40,6 @@ gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
