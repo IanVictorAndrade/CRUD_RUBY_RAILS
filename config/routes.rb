@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get "empregado/novo" => "empregados#new", as: "novo_empregado"
 
   post "empregados" => "empregados#create", as: "create_empregado"
+
+  resources :users
 end
