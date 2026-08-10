@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_07_121000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_10_124926) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -49,6 +49,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_07_121000) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "firstname"
@@ -58,7 +70,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_07_121000) do
 
   create_table "empregados", force: :cascade do |t|
     t.date "birthdate"
+    t.integer "country_id"
     t.datetime "created_at", null: false
+    t.integer "department_id"
     t.string "email"
     t.string "firstname"
     t.string "gender"
@@ -69,5 +83,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_07_121000) do
     t.string "phone"
     t.integer "salary"
     t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_empregados_on_country_id"
+    t.index ["department_id"], name: "index_empregados_on_department_id"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.date "birthdate"
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "gender"
+    t.string "name"
+    t.string "notes"
+    t.string "password_digest"
+    t.string "phone"
+    t.integer "postalcode"
+    t.string "role"
+    t.boolean "termsandconditions"
+    t.datetime "updated_at", null: false
+    t.string "websiteurl"
+  end
+
+  add_foreign_key "empregados", "countries"
+  add_foreign_key "empregados", "departments"
 end

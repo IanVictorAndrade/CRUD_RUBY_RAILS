@@ -134,6 +134,43 @@
     </fieldset>
 
 
+    <fieldset>
+      <div class="form-group row ">
+        <label class="col-sm-2 control-label">
+          Country:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.select :country_id, options_from_collection_for_select(
+            select_country, "id", "name", f.object.country_id
+          ), {
+                         include_blank: 'Select country'
+                       },
+                       class: 'form-control', autofocus: true
+          %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">
+          Department:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.select :department_id, options_from_collection_for_select(
+            select_department, "id", "name", f.object.department_id
+          ), {
+                         include_blank: 'Select department'
+                       },
+                       class: 'form-control', autofocus: true
+          %>
+        </div>
+      </div>
+    </fieldset>
+
+
     <a href="<%= empregados_path%>" class="btn btn-secondary">Back To List</a>
     <%= f.submit 'Update Record', class: "btn btn-primary" %>
   <% end %>

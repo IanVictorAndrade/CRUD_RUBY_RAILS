@@ -58,7 +58,9 @@ class EmpregadosController < ApplicationController
       :gender,
       :notes,
       :email,
-      :phone
+      :phone,
+      :country_id,
+      :department_id
     )
   end
 

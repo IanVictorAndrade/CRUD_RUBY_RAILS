@@ -16,7 +16,9 @@
         <th>Sobrenome</th>
         <th>E-mail</th>
         <th>Telefone</th>
-        <th>Actions</th>
+        <th>País</th>
+        <th>Departamento</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +29,8 @@
           <td><%= empregado.lastname %></td>
           <td><%= empregado.email %></td>
           <td><%= empregado.phone %></td>
+          <td><%= empregado.country.name if empregado.country %></td>
+          <td><%= empregado.department.name if empregado.department %></td>
           <td><%= link_to "Detalhes", exibicao_path(empregado), class: "btn btn-primary"%></td>
           <td><%= link_to "Editar", edit_empregado_path(empregado), class: "btn btn-secondary"%></td>
           <td><%= link_to "Excluir", delete_empregado_path(empregado), class: "btn btn-danger"%></td>
