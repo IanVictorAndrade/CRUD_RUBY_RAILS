@@ -16,16 +16,13 @@ gem "image_processing", "~> 1.2"
 
 gem "actiontext"
 gem "importmap-rails"
+gem "stimulus-rails"
 
 # Serve JavaScript and CSS assets, including Action Text and Active Storage modules.
 gem "propshaft"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
-
-gem "tiny_tds"
-
-gem "activerecord-sqlserver-adapter"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"

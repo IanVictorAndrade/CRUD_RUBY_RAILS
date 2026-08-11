@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_10_124926) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_11_125208) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -47,6 +47,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_10_124926) do
     t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.integer "state_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -87,6 +95,27 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_10_124926) do
     t.index ["department_id"], name: "index_empregados_on_department_id"
   end
 
+  create_table "offshoreempregados", force: :cascade do |t|
+    t.integer "city_id", null: false
+    t.integer "country_id", null: false
+    t.datetime "created_at", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.integer "state_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_offshoreempregados_on_city_id"
+    t.index ["country_id"], name: "index_offshoreempregados_on_country_id"
+    t.index ["state_id"], name: "index_offshoreempregados_on_state_id"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.integer "country_id", null: false
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_states_on_country_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.date "birthdate"
     t.datetime "created_at", null: false
@@ -103,6 +132,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_10_124926) do
     t.string "websiteurl"
   end
 
+  add_foreign_key "cities", "states"
   add_foreign_key "empregados", "countries"
   add_foreign_key "empregados", "departments"
+  add_foreign_key "offshoreempregados", "cities"
+  add_foreign_key "offshoreempregados", "countries"
+  add_foreign_key "offshoreempregados", "states"
+  add_foreign_key "states", "countries"
 end

@@ -23,4 +23,11 @@ Rails.application.routes.draw do
   post "empregados" => "empregados#create", as: "create_empregado"
 
   resources :users
+
+  resources :unicoempregadodelete, only: [:index]
+  delete "unicoempregadodelete/destroy_selected", to: "unicoempregadodelete#destroy_selected", as: :destroy_selected_unicoempregadodelete
+
+  resources :bulkdeleteempregados, only: [:index] do
+    delete "bulk_delete", on: :collection
+  end
 end

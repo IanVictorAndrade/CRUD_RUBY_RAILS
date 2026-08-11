@@ -21,3 +21,33 @@ unless Country.blank?
   Country.create!(name: "Spain")
   Country.create!(name: "Italy")
 end
+
+unless State.blank?
+  State.create!(name: "São Paulo", country_id: 1)
+  State.create!(name: "Rio de Janeiro", country_id: 1)
+  State.create!(name: "London", country_id: 2)
+  State.create!(name: "Manchester", country_id: 2)
+  State.create!(name: "Madrid", country_id: 3)
+  State.create!(name: "Barcelona", country_id: 3)
+  State.create!(name: "Rome", country_id: 4)
+  State.create!(name: "Milan", country_id: 4)
+end
+
+unless City.blank?
+  City.create!(name: "São Paulo", state_id: 1)
+  City.create!(name: "Campinas", state_id: 1)
+  City.create!(name: "Rio de Janeiro", state_id: 2)
+  City.create!(name: "Niterói", state_id: 2)
+  City.create!(name: "London", state_id: 3)
+  City.create!(name: "Liverpool", state_id: 3)
+  City.create!(name: "Manchester", state_id: 4)
+  City.create!(name: "Salford", state_id: 4)
+  City.create!(name: "Madrid", state_id: 5)
+  City.create!(name: "Valencia", state_id: 5)
+  City.create!(name: "Barcelona", state_id: 6)
+  City.create!(name: "Seville", state_id: 6)
+  City.create!(name: "Rome", state_id: 7)
+  City.create!(name: "Naples", state_id: 7)
+  City.create!(name: "Milan", state_id: 8)
+  City.create!(name: "Turin", state_id: 8)
+end

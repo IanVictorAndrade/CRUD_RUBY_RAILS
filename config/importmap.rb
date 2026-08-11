@@ -1,4 +1,6 @@
 pin "application"
 pin "trix"
+pin "@hotwired/stimulus", to: "stimulus.js"
+pin_all_from "app/javascript/controllers", under: "controllers"
 pin "@rails/activestorage", to: "activestorage.esm.js"
 pin "@rails/actiontext", to: "actiontext.esm.js"
