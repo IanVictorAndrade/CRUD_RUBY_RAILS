@@ -30,4 +30,9 @@ Rails.application.routes.draw do
   resources :bulkdeleteempregados, only: [:index] do
     delete "bulk_delete", on: :collection
   end
+
+  resources :offshoreempregados, only: [:new, :create]
+
+  get "locations/states", to: 'locations#states'
+  get "locations/cities", to: 'locations#cities'
 end
