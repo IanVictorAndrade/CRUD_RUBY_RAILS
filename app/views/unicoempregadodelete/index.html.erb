@@ -1,0 +1,40 @@
+<div>
+  <h1>Excluir um funcionário</h1>
+
+  <% if @empregados.present? %>
+    <%= form_with url: destroy_selected_unicoempregadodelete_path, method: :delete do |f| %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Selecionar</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Departamento</th>
+            <th>País</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @empregados.each do |empregado| %>
+            <tr>
+              <td><%= f.radio_button :empregado_id, empregado.id, aria: { label: "Selecionar #{empregado.firstname} #{empregado.lastname}" } %></td>
+              <td><%= empregado.id %></td>
+              <td><%= empregado.firstname %></td>
+              <td><%= empregado.lastname %></td>
+              <td><%= empregado.phone %></td>
+              <td><%= empregado.email %></td>
+              <td><%= empregado.department %></td>
+              <td><%= empregado.country %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= f.submit "Deletar", class: "btn btn-danger", data: { turbo_confirm: "Tem certeza de que deseja excluir o funcionário selecionado?" } %>
+    <% end %>
+  <% else %>
+    <p>Nenhum funcionário cadastrado.</p>
+  <% end %>
+</div>

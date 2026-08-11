@@ -1,0 +1,40 @@
+<div>
+  <h1>Excluir um funcionário</h1>
+
+  <% if @empregados.present? %>
+    <%= form_with(url: bulk_delete_bulkdeleteempregados_path, method: :delete, data: { controller: "selectallcheckbox" }) do |f| %>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th><%= check_box_tag "select_all", nil, false, id:'select-all', data: { "selectallcheckbox-target": "chkheader",
+                                                                                   action: "change->selectallcheckbox#toggleAll" } %></th>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Departamento</th>
+          <th>País</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @empregados.each do |empregado| %>
+          <tr>
+            <td><%= check_box_tag "empregado_id[]", empregado.id, false, data: {
+              "selectallcheckbox-target": "chkrow", empregadoId: empregado.id } %></td>
+            <td><%= empregado.id %></td>
+            <td><%= empregado.firstname %></td>
+            <td><%= empregado.lastname %></td>
+            <td><%= empregado.phone %></td>
+            <td><%= empregado.email %></td>
+            <td><%= empregado.department.name %></td>
+            <td><%= empregado.country.name %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= f.submit "Excluir selecionados", class: "btn btn-danger" %>
+    <% end %>
+  <% end %>
+</div>
