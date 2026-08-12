@@ -35,4 +35,10 @@ Rails.application.routes.draw do
 
   get "locations/states", to: 'locations#states'
   get "locations/cities", to: 'locations#cities'
+
+  get "shoppingcart/index", to: 'shoppingcart#index'
+  get "shoppingcart/product_list", to: 'shoppingcart#product_list'
+  get "shoppingcart/:product_id/add_cart", to: 'shoppingcart#add_cart', as: :add_cart
+
+  get "shoppingcart/:cart_id/remove_cart", to: 'shoppingcart#remove_cart', as: :remove_cart
 end

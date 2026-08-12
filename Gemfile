@@ -29,6 +29,12 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "jquery-rails"
+gem 'rails-ujs'
+gem 'toastr-rails'
+gem "httparty"
+gem "kaminari"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
