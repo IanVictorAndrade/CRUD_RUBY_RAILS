@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_11_125208) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_12_170635) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -49,6 +49,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_125208) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "allowancetypes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.integer "percentage"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
@@ -76,6 +83,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_125208) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "empregadoallowances", force: :cascade do |t|
+    t.integer "allowancetype_id", null: false
+    t.datetime "created_at", null: false
+    t.integer "empregadosalario_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["allowancetype_id"], name: "index_empregadoallowances_on_allowancetype_id"
+    t.index ["empregadosalario_id"], name: "index_empregadoallowances_on_empregadosalario_id"
+  end
+
   create_table "empregados", force: :cascade do |t|
     t.date "birthdate"
     t.integer "country_id"
@@ -93,6 +109,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_125208) do
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_empregados_on_country_id"
     t.index ["department_id"], name: "index_empregados_on_department_id"
+  end
+
+  create_table "empregadosalarios", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "netallowanceamount"
+    t.integer "netsalary"
+    t.integer "salary"
+    t.datetime "updated_at", null: false
   end
 
   create_table "offshoreempregados", force: :cascade do |t|
@@ -133,6 +157,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_125208) do
   end
 
   add_foreign_key "cities", "states"
+  add_foreign_key "empregadoallowances", "allowancetypes"
+  add_foreign_key "empregadoallowances", "empregadosalarios"
   add_foreign_key "empregados", "countries"
   add_foreign_key "empregados", "departments"
   add_foreign_key "offshoreempregados", "cities"

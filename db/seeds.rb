@@ -51,3 +51,13 @@ unless City.blank?
   City.create!(name: "Milan", state_id: 8)
   City.create!(name: "Turin", state_id: 8)
 end
+
+unless Allowancetype.blank?
+  Allowancetype.create!(name: "HRA", percentage: 10)
+  Allowancetype.create!(name: "CA", percentage: 15)
+  Allowancetype.create!(name: "MA", percentage: 20)
+  Allowancetype.create!(name: "PA", percentage: 25)
+  Allowancetype.create!(name: "DA", percentage: 30)
+  Allowancetype.create!(name: "EPF", percentage: 35)
+  Allowancetype.create!(name: "FA", percentage: 40)
+end

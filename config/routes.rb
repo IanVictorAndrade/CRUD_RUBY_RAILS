@@ -41,4 +41,9 @@ Rails.application.routes.draw do
   get "shoppingcart/:product_id/add_cart", to: 'shoppingcart#add_cart', as: :add_cart
 
   get "shoppingcart/:cart_id/remove_cart", to: 'shoppingcart#remove_cart', as: :remove_cart
+
+  resources :empregadospaginacoes, only: [:index]
+
+
+
 end

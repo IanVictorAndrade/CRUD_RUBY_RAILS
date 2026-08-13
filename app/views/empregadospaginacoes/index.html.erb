@@ -1,0 +1,47 @@
+<div>
+
+  <%= form_tag(empregadospaginacoes_path, method: :get) do %>
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <%= text_field_tag(:search, params[:search], placeholder: "Search...", class: "form-control") %>
+    </div>
+    <div class="col-sm-6">
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
+
+
+
+  <div class="page-size-pagination">
+    <%= form_tag empregadospaginacoes_path, method: :get, class: 'form-inline' do %>
+    <%= label_tag :per_page, 'Page Size', class: 'mr-2' %>
+    <%= select_tag :per_page, options_for_select([5, 10, 15, 20, 25, 50, 100], params[:per_page].to_i), { onchange: 'this.form.submit()', class: 'form-control' } %>
+
+    <% end %>
+  </div>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @empregados.each do |empregado| %>
+        <tr>
+          <td><%= empregado.id %></td>
+          <td><%= empregado.firstname %></td>
+          <td><%= empregado.lastname %></td>
+          <td><%= empregado.department.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+    <%= paginate @empregados %>
+</div>
