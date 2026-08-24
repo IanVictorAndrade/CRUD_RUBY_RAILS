@@ -4,6 +4,10 @@ class Empregado < ApplicationRecord
 
   has_rich_text :notes
 
+  after_initialize :do_after_initialize
+
+  after_find :output_after_find
+
   scope :search, -> (query) {
     if query.present?
       left_joins(:department).where(
@@ -13,4 +17,17 @@ class Empregado < ApplicationRecord
       all
     end
   }
+
+  private
+
+  def do_after_initialize
+    puts "AFTER INITIALIZE :- Empregado initialized with firstname: #{firstname},
+      lastname: #{lastname}"
+  end
+
+  def output_after_find
+    puts "AFTER FIND :- Empregado found with firstname: #{firstname},
+      lastname: #{lastname}"
+  end
+
 end

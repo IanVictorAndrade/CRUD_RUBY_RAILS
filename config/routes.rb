@@ -53,4 +53,6 @@ Rails.application.routes.draw do
   get 'list_box_index', to: "allowances#list_box_index"
   post 'list_box_create', to: "allowances#list_box_create"
 
+  resources :empregadofiltros, only: [:index]
+
 end

@@ -1,0 +1,47 @@
+
+<div class="input-group">
+  <%= form_tag empregadofiltros_path, method: :get, class: "form-inline" do %>
+    <div class="form-outline">
+      <%= text_field_tag :search, params[:search], class: "form-control mb-2 mr-sm-2", placeholder: "Search" %>
+      <%= select_tag :country_id, options_from_collection_for_select(select_country, 'id', 'name', params[:country_id]), prompt: "Select Country", class: 'form-control mb-2 mr-sm-2' %>
+      <%= select_tag :department_ids, options_from_collection_for_select(select_department, 'id', 'name', params[:department_ids]), class: 'form-control mb-2 mr-sm-2', multiple: true %>
+      <%= date_field_tag :start_date, params[:start_date], class: "form-control mb-2 mr-sm-2" %>
+      <%= date_field_tag :end_date, params[:end_date].presence || Date.current, class: "form-control mb-2 mr-sm-2" %>
+
+    </div>
+    <%= submit_tag "Filter", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+<% if @empregados.present? %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Department</th>
+      <th>Salary</th>
+      <th>Birth Date</th>
+      <th>Email</th>
+      <th>Country</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @empregados.each do |employee| %>
+      <tr>
+        <td><%= employee.id %></td>
+        <td><%= employee.firstname %></td>
+        <td><%= employee.lastname %></td>
+        <td><%= employee.department.name %></td>
+        <td><%= employee.salary %></td>
+        <td><%= employee.birthdate %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.country.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
