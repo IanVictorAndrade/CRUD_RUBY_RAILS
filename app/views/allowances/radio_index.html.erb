@@ -1,0 +1,74 @@
+<div>
+  <h1>Working with Radio Buttons</h1>
+  <br/>
+
+  <%= form_with model: @empregado_salario, url: radio_create_path, local: true, class: "form-horizontal", data: { controller: 'salary' } do |f| %>
+    <fieldset>
+      <div class="form-group row">
+        <label>
+          Salary:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.number_field :salary, placeholder: 'Enter Salary', class: 'form-control', autofocus: true, data: {
+            action: 'change->salary#calculate', "salary-target": "salaryInput" } %>
+        </div>
+      </div>
+    </fieldset>
+
+    <legend class="col-form-label col-sm-2 pt-0 pl-0">Allowance Types:</legend>
+    <% @allowance_types.each do |allowance_type| %>
+      <fieldset>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <div class="form-check">
+              <%= radio_button_tag :allowance_type_id, allowance_type.id, data: { action: 'change->salary#calculate', percentage: allowance_type.percentage }, class: 'form-check-input', id: allowance_type.id %>
+              <label class="form-check-label" for="<%= allowance_type.id %>">
+                <%= "#{allowance_type.name} (#{allowance_type.percentage}%)" %>
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">
+          Allowance Amount:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.number_field :netallowanceamount,
+                             readonly: true,
+                             class: 'form-control',
+                             data: { "salary-target": 'allowanceSalary' } %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">
+          Net Salary:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.number_field :netsalary, class: 'form-control',
+                             readonly: true,
+                             data: { "salary-target": 'netSalary' } %>
+
+        </div>
+      </div>
+    </fieldset>
+
+
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+
+
+
+  <% end %>
+
+
+</div>
