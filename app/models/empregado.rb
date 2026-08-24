@@ -8,6 +8,10 @@ class Empregado < ApplicationRecord
 
   after_find :output_after_find
 
+  after_destroy :print_destroyed_message
+
+
+
   scope :search, -> (query) {
     if query.present?
       left_joins(:department).where(
@@ -28,6 +32,11 @@ class Empregado < ApplicationRecord
   def output_after_find
     puts "AFTER FIND :- Empregado found with firstname: #{firstname},
       lastname: #{lastname}"
+  end
+
+  def print_destroyed_message
+      puts "AFTER DESTROY :- Empregado destroyed!!"
+      Backupempregado.create(firstname: self.firstname, lastname: self.lastname)
   end
 
 end
