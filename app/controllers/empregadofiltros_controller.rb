@@ -1,0 +1,2 @@
+class EmpregadofiltrosController < ApplicationController
+end

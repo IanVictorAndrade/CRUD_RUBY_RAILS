@@ -1,0 +1,115 @@
+<div>
+  <h1>Working with List Box</h1>
+  <br/> <br/> <br/>
+
+  <%= form_with model: @empregado_salario, url: list_box_create_path,
+                local: true, class: "form-horizontal", data: { controller: 'listbox' } do |f| %>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">
+          Salary:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.number_field :salary, placeholder: 'Enter Salary',
+                             class: 'form-control',
+                             autofocus: true, data: { "listbox-target": "salaryInput" } %>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+
+      <div class="form-group row">
+        <label class="col-sm-4 control-label">
+          Available Allowances:
+        </label>
+        <div class="col-sm-4"></div>
+        <label class="col-sm-4 control-label">
+          Allowances Entitled For:
+        </label>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <% options = @allowance_types.map { |model| [model.name, model.id,
+                                                       { "data-percentage" => model.percentage }] } %>
+          <%= select_tag "type_ids[]", options_for_select(options),
+                         class: 'form-control', autofocus: true,
+                         multiple: true,
+                         data: { "listbox-target": "leftSelect",
+                                 action: "change->listbox#changeRightButtons" } %>
+        </div>
+
+        <div class="col-sm-4 justify-content-around d-flex flex-column text-center">
+          <div>
+            <button type="button" class="btn btn-outline-primary" data-listbox-target="rightArrow" data-action="click->listbox#moveOptionsRight">
+              >
+            </button>
+          </div>
+          <div class="pt-2">
+            <button type="button" class="btn btn-outline-primary" data-listbox-target="leftArrow" data-action="click->listbox#moveOptionsLeft">
+              <
+            </button>
+          </div>
+          <div class="pt-2">
+            <button type="button" class="btn btn-outline-primary" data-listbox-target="multipleRightArrow" data-action="click->listbox#moveOptionsRight">
+              >>
+            </button>
+          </div>
+          <div class="pt-2">
+            <button type="button" class="btn btn-outline-primary" data-listbox-target="multipleLeftArrow" data-action="click->listbox#moveOptionsLeft">
+              <<
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <%= select_tag "allowancetype_ids[]", "",
+                         class: 'form-control', autofocus: true,
+                         multiple: true,
+                         data: { "listbox-target": "rightSelect",
+                                 action: "change->listbox#changeLeftButtons" } %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">
+          Net Allowance Amount:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.number_field :netallowanceamount, readonly: true,
+                             class: 'form-control',
+                             data: { "listbox-target": 'allowanceSalary' } %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">
+          Net Salary:
+          <span class="star">*</span>
+        </label>
+        <div class="col-sm-10">
+          <%= f.number_field :netsalary, class: 'form-control',
+                             readonly: true, data: { "listbox-target": 'netSalary' } %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-primary"
+                  data-action="click->listbox#calculateSalary">Calculate
+          </button>
+        </div>
+      </div>
+    </fieldset>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>

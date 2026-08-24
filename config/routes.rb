@@ -50,4 +50,7 @@ Rails.application.routes.draw do
   get 'check_box_index', to: "allowances#check_box_index"
   post 'check_box_create', to: "allowances#check_box_create"
 
+  get 'list_box_index', to: "allowances#list_box_index"
+  post 'list_box_create', to: "allowances#list_box_create"
+
 end
