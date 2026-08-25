@@ -55,4 +55,6 @@ Rails.application.routes.draw do
 
   resources :empregadofiltros, only: [:index]
 
+  resources :transfers, except: [:show, :edit, :update]
+
 end

@@ -1,0 +1,41 @@
+
+<div>
+  <h1>Listing Transfers</h1>
+  <br/>
+
+  <a href="<%= new_transfer_path %>" class="btn btn-primary">New Transfer</a>
+
+  <br/>
+
+  <% if @transfers.present? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>From Account</th>
+        <th>To Account</th>
+        <th>Transfer Amount</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @transfers.each do |transfer| %>
+        <tr>
+          <td><%= transfer.id %></td>
+          <td>
+            <%= transfer.from_account.name %>
+            </br>Balance After Transfer: <%= transfer.from_account.balance %>
+          </td>
+          <td>
+            <%= transfer.to_account.name %>
+            </br>Balance After Transfer: <%= transfer.to_account.balance %>
+          </td>
+          <td><%= transfer.amount %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

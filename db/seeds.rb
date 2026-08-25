@@ -61,3 +61,12 @@ unless Allowancetype.blank?
   Allowancetype.create!(name: "EPF", percentage: 35)
   Allowancetype.create!(name: "FA", percentage: 40)
 end
+
+unless Account.blank?
+  (1..15).each do |i|
+    Account.create!(
+      name: "Account #{i}",
+      balance: rand(1000..10000)
+    )
+  end
+end

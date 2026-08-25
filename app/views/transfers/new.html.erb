@@ -1,0 +1,51 @@
+
+<%= form_for @transfer do |f| %>
+
+  <fieldset>
+    <div class="form-group row">
+      <label class="col-sm-2 control-label">
+        From Account:
+        <span class="star">*</span>
+      </label>
+      <div class="col-sm-10">
+        <%= f.select :from_account_id, options_from_collection_for_select(select_account, 'id', 'name', f.object.from_account_id), { include_blank: "Select Account"}, class: 'form-control', autofocus: true %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class="form-group row">
+      <label class="col-sm-2 control-label">
+        To Account:
+        <span class="star">*</span>
+      </label>
+      <div class="col-sm-10">
+        <%= f.select :to_account_id, options_from_collection_for_select(select_account, 'id', 'name', f.object.to_account_id), { include_blank: 'Select Account' }, class: 'form-control', autofocus: true %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class="form-group row">
+      <label class="col-sm-2 control-label">
+        Amount:
+        <span class="star">*</span>
+      </label>
+      <div class="col-sm-10">
+        <%= f.number_field :amount, autofocus: true, placeholder: 'Enter Amount', class: 'form-control'  %>
+      </div>
+    </div>
+  </fieldset>
+
+  <%= f.submit f.object.new_record? ? 'Insert Record' : 'Update Record', class: "btn btn-primary" %>
+
+  <% if f.object.new_record? %>
+      <%= link_to 'Back To List', transfers_path, class: "btn btn-secondary" %>
+
+  <% end %>
+
+
+
+
+
+<% end %>

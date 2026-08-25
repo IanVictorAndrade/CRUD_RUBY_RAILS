@@ -7,6 +7,10 @@ module ApplicationHelper
     Country.all
   end
 
+  def select_account
+    Account.all
+  end
+
   def print_error(errors, field)
     return if errors[field].blank?
 

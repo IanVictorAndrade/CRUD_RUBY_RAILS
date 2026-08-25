@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_24_154422) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_24_155440) do
+  create_table "accounts", force: :cascade do |t|
+    t.decimal "balance"
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -147,6 +154,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_154422) do
     t.index ["country_id"], name: "index_states_on_country_id"
   end
 
+  create_table "transfers", force: :cascade do |t|
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.integer "from_account_id", null: false
+    t.integer "to_account_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_account_id"], name: "index_transfers_on_from_account_id"
+    t.index ["to_account_id"], name: "index_transfers_on_to_account_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.date "birthdate"
     t.datetime "created_at", null: false
@@ -172,4 +189,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_154422) do
   add_foreign_key "offshoreempregados", "countries"
   add_foreign_key "offshoreempregados", "states"
   add_foreign_key "states", "countries"
+  add_foreign_key "transfers", "accounts", column: "from_account_id"
+  add_foreign_key "transfers", "accounts", column: "to_account_id"
 end
