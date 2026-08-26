@@ -60,3 +60,19 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
+
+#PDF
+gem 'prawn'
+gem 'prawn-table'
+
+#CSV
+gem 'csv'
+
+#XLS
+gem 'spreadsheet'
+
+#DOCX
+gem 'caracal'
+
+
+gem "matrix", "~> 0.4.3"

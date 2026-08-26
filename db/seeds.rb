@@ -70,3 +70,26 @@ unless Account.blank?
     )
   end
 end
+
+
+if Belfastempregado.none?
+  Belfastempregado.create!(firstname: "Connors",lastname:"McGregor",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Chad",lastname:"Mendis",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Nate",lastname:"Diaz",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Nick",lastname:"Diaz",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Anthony",lastname:"Joshua",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Michael",lastname:"Johnson",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Israel",lastname:"Adesanya",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Michael",lastname:"Chang",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Novak",lastname:"Djokovic",salary:5000,notes:'Notorious Guy!')
+
+  Belfastempregado.create!(firstname: "Pete",lastname:"Samprass",salary:5000,notes:'Notorious Guy!')
+end
