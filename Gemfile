@@ -62,6 +62,11 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
+
+gem "tiny_tds"
+gem "activerecord-sqlserver-adapter"
+gem "activerecord-session_store"
+
 #PDF
 gem 'prawn'
 gem 'prawn-table'
