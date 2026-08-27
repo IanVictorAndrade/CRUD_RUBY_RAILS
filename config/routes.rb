@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "show/:id" => "empregados#show", as: "exibicao"
 
+  get "empregados/download_file" => "empregadoinfodetails#download_file", as: :empregados_download_file
+
   get "empregados/:id" => "empregados#edit", as: "edit_empregado"
 
   patch "empregados/:id" => "empregados#update", as: "update_empregado"
@@ -58,8 +60,9 @@ Rails.application.routes.draw do
   resources :transfers, except: [:show, :edit, :update]
 
   resources :belfastempregados, only: [:index]
-  root "belfastempregados#index"
 
   get 'belfastempregados/export_as' => 'belfastempregados#export_as', as: :export_as
 
+  resources :empregadoinfodetails, only: [:index, :show, :new, :create]
+  root "empregadoinfodetails#index"
 end

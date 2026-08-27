@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 mt-4">
+      <%= form_for @empregado, url: empregadoinfodetails_path(@empregado), method: :post do |f| %>
+        <div class="mb-2">
+          <span>First name: </span>
+          <%= f.text_field :firstname %>
+        </div>
+        <div class="mb-2">
+          <span>Last name: </span>
+          <%= f.text_field :lastname %>
+        </div>
+
+        <div class="mb-2">
+          <span>Cv file: </span>
+          <%= file_field_tag :cv %>
+        </div>
+
+        <div class="mb-2">
+          <span>Photo file: </span>
+          <%= file_field_tag :photo %>
+        </div>
+
+        <div class="mb-4">
+          <span>Pan card pic blob: </span>
+          <%= f.file_field :pan_card %>
+        </div>
+
+        <div class="mb-2">
+          <h5>Certificados</h5>
+        </div>
+        <div class="mb-2">
+          <%= link_to 'Add Certificados', '#',
+                      class: 'btn btn-primary add-certificate' %>
+        </div>
+        <div class="certificate_list">
+        </div>
+        <div class="mb-2">
+          <%= f.submit :Submit, class: 'btn btn-success submit-emp-form' %>
+        </div>
+        <div class="mb-2">
+          <%= link_to 'Back', empregadoinfodetails_path, class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="certificate_fields d-none">
+  <div class="certi-box mb-2">
+    <div class="row">
+      <div class="col-8">
+        <%= file_field_tag "empregado[empregadocertificados_attributes][][certi]",
+                           class: "form-control certificate-file",
+                           accept: "image/png,image/jpeg" %>
+      </div>
+      <div class="col-4">
+        <%= link_to "#",
+                    class: 'btn btn-danger remove_certi' do %>
+          <i class="bi bi-trash"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

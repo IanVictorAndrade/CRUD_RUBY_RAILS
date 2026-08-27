@@ -17,6 +17,7 @@ gem "image_processing", "~> 1.2"
 gem "actiontext"
 gem "importmap-rails"
 gem "stimulus-rails"
+gem "turbo-rails"
 
 # Serve JavaScript and CSS assets, including Action Text and Active Storage modules.
 gem "propshaft"

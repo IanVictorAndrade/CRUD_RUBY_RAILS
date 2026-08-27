@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_26_121818) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_26_145658) do
   create_table "accounts", force: :cascade do |t|
     t.decimal "balance"
     t.datetime "created_at", null: false
@@ -115,6 +115,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_26_121818) do
     t.index ["empregadosalario_id"], name: "index_empregadoallowances_on_empregadosalario_id"
   end
 
+  create_table "empregadocertificados", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "empregadoinfo_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["empregadoinfo_id"], name: "index_empregadocertificados_on_empregadoinfo_id"
+  end
+
+  create_table "empregadoinfos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "empregados", force: :cascade do |t|
     t.date "birthdate"
     t.integer "country_id"
@@ -192,6 +206,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_26_121818) do
   add_foreign_key "cities", "states"
   add_foreign_key "empregadoallowances", "allowancetypes"
   add_foreign_key "empregadoallowances", "empregadosalarios"
+  add_foreign_key "empregadocertificados", "empregadoinfos"
   add_foreign_key "empregados", "countries"
   add_foreign_key "empregados", "departments"
   add_foreign_key "offshoreempregados", "cities"
