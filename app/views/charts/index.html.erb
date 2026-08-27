@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 text-end mt-4 mb-4">Charts:</div>
+    <div class="col-md-8">
+      <div class="text-center mt-4 mb-4">
+        <%= select_tag "chart_type",
+                       options_for_select(@chart_types), class: 'form-control w-25'   %>
+      </div>
+      <canvas width="300" height="100" id="chart"></canvas>
+
+    </div>
+  </div>
+</div>

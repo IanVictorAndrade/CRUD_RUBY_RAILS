@@ -64,5 +64,8 @@ Rails.application.routes.draw do
   get 'belfastempregados/export_as' => 'belfastempregados#export_as', as: :export_as
 
   resources :empregadoinfodetails, only: [:index, :show, :new, :create]
-  root "empregadoinfodetails#index"
+
+  root "charts#index"
+  get "charts/fetch_sales_data" => "charts#fetch_sales_data"
+
 end

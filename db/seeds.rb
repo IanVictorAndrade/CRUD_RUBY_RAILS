@@ -93,3 +93,8 @@ if Belfastempregado.none?
 
   Belfastempregado.create!(firstname: "Pete",lastname:"Samprass",salary:5000,notes:'Notorious Guy!')
 end
+
+
+['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].each do |mon|
+  Sale.create(monthname: mon, amount: rand(11111..999999))
+end

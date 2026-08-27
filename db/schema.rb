@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_26_145658) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_27_145947) do
   create_table "accounts", force: :cascade do |t|
     t.decimal "balance"
     t.datetime "created_at", null: false
@@ -167,6 +167,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_26_145658) do
     t.index ["city_id"], name: "index_offshoreempregados_on_city_id"
     t.index ["country_id"], name: "index_offshoreempregados_on_country_id"
     t.index ["state_id"], name: "index_offshoreempregados_on_state_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.string "monthname"
+    t.datetime "updated_at", null: false
   end
 
   create_table "states", force: :cascade do |t|
