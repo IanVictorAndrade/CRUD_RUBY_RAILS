@@ -12,7 +12,7 @@ gem "puma", ">= 5.0"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 2.0"
 
 gem "actiontext"
 gem "importmap-rails"
