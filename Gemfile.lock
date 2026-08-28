@@ -342,7 +342,7 @@ GEM
       bigdecimal
       logger
       ruby-ole
-    sqlite3 (2.9.5-x86_64-linux-gnu)
+    sqlite3 (2.9.6-x86_64-linux-gnu)
     sshkit (1.25.1)
       base64
       logger
