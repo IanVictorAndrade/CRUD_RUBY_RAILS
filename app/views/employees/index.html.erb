@@ -1,3 +1,5 @@
+
+
 <h1>Emp name cookie value is  <%= cookies[:emp_name] %></h1>
 
 <h1>Emp name cookie value is  <%= cookies[:exp_cookies] %></h1>
@@ -7,24 +9,24 @@
 
 <h1>Credit Card is  <%= cookies.encrypted[:credit_card] %></h1>
 
-<%= link_to "Goto Home", home_path %>
+<%= link_to "Go to Home", home_path %>
 
 <div>
-  The first part is a Base64 encoded JSON object containing the value we stored
-  and the second part is a cryptographically generated digest.
-  When Rails receives a signed cookie,
-  it compares the value to the digest and if they don't match,
-  the cookie's value will be nil'd.
-  That's why a user cannot modify a signed cookie.
+The first part is a Base64 encoded JSON object containing the value we stored 
+and the second part is a cryptographically generated digest. 
+When Rails receives a signed cookie, 
+it compares the value to the digest and if they don't match, 
+the cookie's value will be nil'd. 
+That's why a user cannot modify a signed cookie.
 </div>
 
 <div>
-  An encrypted cookie is divided into 3 parts separated by --,
-  rather than two parts like a signed cookie.
-  The first part is the encrypted data.
-  The second part is called an initialization vector,
-  which is a random input to the encryption algorithm.
-  And the third part is an authentication tag, which is similar to the digest of a
-  signed cookie.
-  All three parts are Base64 encoded.
+An encrypted cookie is divided into 3 parts separated by --, 
+rather than two parts like a signed cookie. 
+The first part is the encrypted data. 
+The second part is called an initialization vector, 
+which is a random input to the encryption algorithm. 
+And the third part is an authentication tag, which is similar to the digest of a 
+signed cookie. 
+All three parts are Base64 encoded.
 </div>
